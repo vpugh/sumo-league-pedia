@@ -1,5 +1,14 @@
 import styled, { css } from "styled-components";
 
+export const WrestlerFormContainer = styled.div`
+  max-width: 600px;
+  margin: 40px auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+`;
+
 export const ButtonHolder = styled.div`
   display: flex;
   padding: 15px 0 0 0;

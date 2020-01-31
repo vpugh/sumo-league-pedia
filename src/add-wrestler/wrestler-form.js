@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { addWrestlers, getDivisions, getRanks } from "../utils/api";
+import { getDivisions, getRanks } from "../utils/api";
 import {
   Button,
   ButtonHolder,
   InputLabel,
   TextInput,
   SelectInput2
-} from "../styles/add-wrestler-form";
+} from "../styles/wrestler-form";
 
 const fetchDivisions = async set => {
   const data = await getDivisions();
@@ -18,16 +18,29 @@ const fetchRanks = async set => {
   set(data);
 };
 
-const WrestlerForm = () => {
-  const [name, setName] = useState("");
-  const [division, setDivision] = useState("");
-  const [rank, setRank] = useState("");
-  const [rankNumber, setRankNumber] = useState("");
-  const [age, setAge] = useState("");
-  const [rankDirection, setRankDirection] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [injured, setInjured] = useState("false");
-  const [status, setStatus] = useState("active");
+const WrestlerForm = props => {
+  const { primaryButton, primaryAction, wrestlerData } = props;
+  const [name, setName] = useState((wrestlerData && wrestlerData.name) || "");
+  const [division, setDivision] = useState(
+    (wrestlerData && wrestlerData.division) || ""
+  );
+  const [rank, setRank] = useState((wrestlerData && wrestlerData.rank) || "");
+  const [rankNumber, setRankNumber] = useState(
+    (wrestlerData && wrestlerData.rankNumber) || ""
+  );
+  const [age, setAge] = useState((wrestlerData && wrestlerData.age) || "");
+  const [rankDirection, setRankDirection] = useState(
+    (wrestlerData && wrestlerData["rank_direction"]) || ""
+  );
+  const [nationality, setNationality] = useState(
+    (wrestlerData && wrestlerData.nationality) || ""
+  );
+  const [injured, setInjured] = useState(
+    (wrestlerData && wrestlerData.injured) || "false"
+  );
+  const [status, setStatus] = useState(
+    (wrestlerData && wrestlerData.status) || "active"
+  );
 
   const [divisionList, setDivisionList] = useState();
   const [rankList, setRankList] = useState();
@@ -42,20 +55,15 @@ const WrestlerForm = () => {
     set(value);
   };
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const data = {
-      name,
-      division,
-      rank: `${rank} ${rankNumber !== "" && rankNumber}`,
-      rank_direction: rankDirection,
-      nationality,
-      age: Number(age),
-      injured: JSON.parse(injured),
-      status
-    };
-    console.log("Submitted", data);
-    addWrestlers(JSON.stringify(data));
+  const data = {
+    name,
+    division,
+    rank: `${rank} ${rankNumber !== "" && rankNumber}`,
+    rank_direction: rankDirection,
+    nationality,
+    age: Number(age),
+    injured: JSON.parse(injured),
+    status
   };
 
   const canAdd = Boolean(
@@ -70,7 +78,7 @@ const WrestlerForm = () => {
   );
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={e => primaryAction(e, data)}>
       <div>
         <InputLabel htmlFor="name">Name</InputLabel>
         <TextInput
@@ -200,7 +208,7 @@ const WrestlerForm = () => {
       <ButtonHolder>
         <Button cancel>Cancel</Button>
         <Button primary disabled={!canAdd} type="submit">
-          Add Wrestler
+          {primaryButton}
         </Button>
       </ButtonHolder>
     </form>
