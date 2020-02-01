@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+const capitalizeFirstLetter = string => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 const displayRecord = record => {
   const objectEntries = Object.entries(record);
   const bashos = [];
@@ -19,74 +23,88 @@ const displayRecord = record => {
   const wl = bashos.map(wl => wl["withdraw-loss"]);
   const champion = bashos.map(c => c.champion);
   return (
-    <table
-      style={{
-        textAlign: "left",
-        width: "100%",
-        display: "table",
-        borderSpacing: 0,
-        borderCollapse: "collapse",
-        background: "#f5f5f5"
-      }}
-    >
-      {displayHeader(headers)}
-      <tbody>
-        {displayBody("W", wins)}
-        {displayBody("L", loss)}
-        {displayBody("WL", wl)}
-        {displayChampion("Champion", champion)}
-      </tbody>
-    </table>
+    <div style={{ overflowX: "auto" }}>
+      <table
+        style={{
+          textAlign: "left",
+          width: "100%",
+          display: "table",
+          borderSpacing: 0,
+          borderCollapse: "collapse",
+          background: "#f5f5f5"
+        }}
+      >
+        {displayHeader(headers)}
+        <tbody>
+          {displayBody("W", wins)}
+          {displayBody("L", loss)}
+          {displayBody("WL", wl)}
+          {displayChampion("Champion", champion)}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
-const displayHeader = b => {
-  return (
-    <thead>
-      <tr>
-        {b.map(header => (
-          <th
-            style={{
-              padding: "12px 24px 12px 16px",
-              borderBottom: "1px solid #ddd",
-              textAlign: "left"
-            }}
-          >
-            {header}
-          </th>
-        ))}
-      </tr>
-    </thead>
-  );
-};
-
-const displayBody = (text, array) => {
-  return (
+const displayHeader = b => (
+  <thead>
     <tr>
-      {array.map(a => (
+      {b.map(header => (
+        <th
+          style={{
+            padding: "12px 24px 12px 16px",
+            borderBottom: "1px solid #ddd",
+            textAlign: "left"
+          }}
+        >
+          {capitalizeFirstLetter(header)}
+        </th>
+      ))}
+    </tr>
+  </thead>
+);
+
+const displayBody = (text, array) => (
+  <tr>
+    {array.map(a => {
+      const hasKachiKoshi = Boolean(a !== null && text === "W" && a >= 8);
+      const hasMakeKoshi = Boolean(a !== null && text === "L" && a >= 8);
+      const withdrew = Boolean(a !== null && text === "WL");
+
+      const backgroundColor = () => {
+        if (hasKachiKoshi) {
+          return "green";
+        }
+        if (hasMakeKoshi) {
+          return "red";
+        }
+        if (withdrew) {
+          return "yellow";
+        }
+      };
+      return (
         <td
           style={{
-            padding: "6px 24px 6px 16px",
+            background: backgroundColor(),
+            padding: "12px 24px 12px 16px",
             borderBottom: "1px solid rgb(224, 224, 224)",
             textAlign: "left"
           }}
         >
           {a ? `${text}: ${a}` : "—"}
         </td>
-      ))}
-    </tr>
-  );
-};
+      );
+    })}
+  </tr>
+);
 
-const displayChampion = (text, array) => {
-  return (
-    <tr>
-      {array.map(a => (
-        <td style={{ padding: "6px 24px 6px 16px" }}>{a && `${text}`}</td>
-      ))}
-    </tr>
-  );
-};
+const displayChampion = (text, array) => (
+  <tr>
+    {array.map(a => (
+      <td style={{ padding: "12px 24px 12px 16px" }}>{a && `${text}`}</td>
+    ))}
+  </tr>
+);
 
 const DisplayRecord = props => {
   const { data, year } = props;
@@ -97,10 +115,11 @@ const DisplayRecord = props => {
     <div onClick={() => setShowTable(!showTable)}>
       <h4
         style={{
-          backgroundColor: "#ddd",
+          backgroundColor: "rgb(236, 234, 234)",
           marginBottom: 0,
           marginTop: ".25rem",
-          padding: "5px 10px"
+          padding: "5px 10px",
+          borderTop: "1px solid rgb(212, 212, 212)"
         }}
       >
         {year}

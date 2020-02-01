@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const WrestlerFormContainer = styled.div`
-  max-width: 600px;
+  max-width: 720px;
   margin: 40px auto;
   border: 1px solid #ddd;
   padding: 20px;
