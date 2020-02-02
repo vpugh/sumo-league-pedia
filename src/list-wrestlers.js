@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getWrestlers } from "./utils/api";
 import { WrestlerFormContainer } from "./styles/wrestler-form";
-import DisplayRecord from "./display-record";
+import GetRecords from "./get-records";
 
 const capitalizeFirstLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -12,9 +12,8 @@ const fetchWrestlers = async set => {
   set(data);
 };
 
-const getRecords = r => {
-  const years = Object.keys(r);
-  return years.map(y => <DisplayRecord data={r[y]} year={y} />);
+const getRecords = id => {
+  return <GetRecords id={id} />;
 };
 
 const ListWrestlers = () => {
@@ -48,7 +47,7 @@ const ListWrestlers = () => {
                 <h3 style={{ margin: "0 0 5px 0" }}>
                   <strong>{w.name}</strong>
                 </h3>
-                <p style={{ margin: 0 }}>
+                <p style={{ margin: 0, fontStyle: "italic" }}>
                   {w.division}/{capitalizeFirstLetter(w.rank_direction)}{" "}
                   {capitalizeFirstLetter(w.rank)}
                 </p>
@@ -66,7 +65,7 @@ const ListWrestlers = () => {
             <p style={{ padding: "0 10px", marginBottom: ".5rem" }}>
               Recent Career Record:
             </p>
-            {w.record && getRecords(w.record)}
+            {getRecords(w.id)}
           </div>
         ))}
     </WrestlerFormContainer>
