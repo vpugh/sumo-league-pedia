@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDivisions, getRanks } from "../utils/api";
+import { capitalizeFirstLetter } from "../utils/helpers";
 import {
   Button,
   ButtonHolder,
@@ -26,11 +27,11 @@ const WrestlerForm = props => {
   );
   const [rank, setRank] = useState((wrestlerData && wrestlerData.rank) || "");
   const [rankNumber, setRankNumber] = useState(
-    (wrestlerData && wrestlerData.rankNumber) || ""
+    (wrestlerData && wrestlerData.rankNumber) || null
   );
   const [age, setAge] = useState((wrestlerData && wrestlerData.age) || "");
   const [rankDirection, setRankDirection] = useState(
-    (wrestlerData && wrestlerData["rank_direction"]) || ""
+    (wrestlerData && wrestlerData.rankDirection) || ""
   );
   const [nationality, setNationality] = useState(
     (wrestlerData && wrestlerData.nationality) || ""
@@ -58,8 +59,9 @@ const WrestlerForm = props => {
   const data = {
     name,
     division,
-    rank: `${rank} ${rankNumber !== "" && rankNumber}`,
-    rank_direction: rankDirection,
+    rank,
+    rankNumber,
+    rankDirection,
     nationality,
     age: Number(age),
     injured: JSON.parse(injured),
@@ -125,17 +127,20 @@ const WrestlerForm = props => {
             {rankList &&
               rankList.map(rl => (
                 <option key={rl} value={rl}>
-                  {rl}
+                  {capitalizeFirstLetter(rl)}
                 </option>
               ))}
           </select>
         </SelectInput2>
-        {rank === "maegashira" && (
-          <TextInput
-            name="rankNumber"
-            value={rankNumber}
-            onChange={e => onChange(e, setRankNumber)}
-          />
+        {(rank === "maegashira" || rank === "sekiwake") && (
+          <div>
+            <InputLabel htmlFor="rankNumber">Rank Number</InputLabel>
+            <TextInput
+              name="rankNumber"
+              value={rankNumber}
+              onChange={e => onChange(e, setRankNumber)}
+            />
+          </div>
         )}
       </div>
       <div>

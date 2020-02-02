@@ -4,7 +4,9 @@ import DisplayRecord from "./display-record";
 
 const fetchWrestlerRecords = async (set, id) => {
   const data = await getWrestlerRecord(id);
-  set(data[0].record);
+  if (data.length !== 0) {
+    set(data[0].record);
+  }
 };
 
 const GetRecords = props => {
@@ -20,9 +22,8 @@ const GetRecords = props => {
     return years.map(y => {
       return <DisplayRecord key={y} data={record[y][0]} year={y} id={id} />;
     });
-  } else {
-    return <div>Loading</div>;
   }
+  return null;
 };
 
 export default GetRecords;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { capitalizeFirstLetter } from "./utils/helpers";
 import {
   ListContainer,
   Table,
@@ -10,10 +11,6 @@ import {
   RecordYear
 } from "./styles/display-record";
 
-const capitalizeFirstLetter = string => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
 const listData = record => {
   const objectEntries = Object.entries(record);
   return (
@@ -22,7 +19,9 @@ const listData = record => {
         <thead>
           <tr>
             {objectEntries.map(obj => (
-              <TableHeader>{capitalizeFirstLetter(obj[0])}</TableHeader>
+              <TableHeader key={obj[0]}>
+                {capitalizeFirstLetter(obj[0])}
+              </TableHeader>
             ))}
           </tr>
         </thead>
@@ -98,7 +97,7 @@ const DisplayRecord = props => {
   return (
     <div onClick={() => setShowTable(!showTable)}>
       <RecordYear>{year}</RecordYear>
-      {showTable && listData(data)}
+      {showTable && data && listData(data)}
     </div>
   );
 };
