@@ -1,0 +1,818 @@
+[
+  {
+  "id": "209494",
+  "rikishiId": "1",
+  "record": {
+      "2019": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 4,
+            "kyujo": 1,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 15,
+            "loss": 0,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 12,
+            "loss": 3,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 0,
+            "loss": 2,
+            "kyujo": 13,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 14,
+            "loss": 1,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2020": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 1,
+            "loss": 3,
+            "kyujo": 11,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "49473894",
+    "rikishiId": "2",
+    "record": {
+      "2019": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 9,
+            "loss": 6,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 9,
+            "loss": 6,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 8,
+            "loss": 7,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2020": [
+        {
+          "hatsu-2020": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 8,
+            "loss": 7,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "04938849",
+    "rikishiId": "3",
+    "record": {
+      "2019": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 5,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 8,
+            "loss": 7,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 5,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 8,
+            "loss": 7,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 9,
+            "loss": 6,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 9,
+            "loss": 6,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2020": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 5,
+            "loss": 10,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "38488599",
+    "rikishiId": "4",
+    "record": {
+      "2019": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 6,
+            "loss": 9,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": 5,
+            "loss": 10,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 8,
+            "loss": 7,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 9,
+            "loss": 6,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2020": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 6,
+            "loss": 9,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "4978374994",
+    "rikishiId": "5",
+    "record": {
+      "2019": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 8,
+            "loss": 7,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 7,
+            "loss": 8,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": 12,
+            "loss": 3,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 7,
+            "loss": 8,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 5,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 11,
+            "loss": 4,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2020": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 5,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": false,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "4739490050",
+    "rikishiId": "6",
+    "record": {
+      "2019": [
+        {
+          "hatsu": {
+            "rank": "West Ōzeki #2",
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 0,
+            "loss": 5,
+            "kyujo": 10,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "rank": "East Ōzeki #2",
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 7,
+            "loss": 8,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "rank": "West Sekiwake #1",
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 5,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "nagoya": {
+            "rank": "West Ōzeki #2",
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 0,
+            "loss": 6,
+            "kyujo": 9,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "rank": "East Ōzeki #2",
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 6,
+            "loss": 9,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "rank": "West Sekiwake #1",
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 2,
+            "loss": 3,
+            "kyujo": 10,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2020": [
+        {
+          "hatsu": {
+            "rank": "West Maegashira #6",
+            "tournamentPassed": true,
+            "tournamentId": 1,
+            "wins": 5,
+            "loss": 10,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "rank": "",
+            "tournamentPassed": false,
+            "tournamentId": 2,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "natsu": {
+            "rank": "",
+            "tournamentPassed": false,
+            "tournamentId": 3,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "rank": "",
+            "tournamentPassed": false,
+            "tournamentId": 4,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "aki": {
+            "rank": "",
+            "tournamentPassed": false,
+            "tournamentId": 5,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "rank": "",
+            "tournamentPassed": false,
+            "tournamentId": 6,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          }
+        }
+      ]
+    }
+  }
+]

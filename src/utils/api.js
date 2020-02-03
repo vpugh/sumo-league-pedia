@@ -1,12 +1,12 @@
 export const getWrestlers = async () => {
   let res = await fetch(
-    "https://5e2a46fe92edd600140de272.mockapi.io/api/v1/rikishi"
+    "/api/v1/rikishi"
   );
   return await res.json();
 };
 
 export const addWrestlers = body => {
-  fetch("https://5e2a46fe92edd600140de272.mockapi.io/api/v1/rikishi", {
+  fetch("/api/v1/rikishi", {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -17,7 +17,7 @@ export const addWrestlers = body => {
 };
 
 export const updateWrestlers = (body, id) => {
-  fetch(`https://5e2a46fe92edd600140de272.mockapi.io/api/v1/rikishi/${id}`, {
+  fetch(`/api/v1/rikishi/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -29,28 +29,28 @@ export const updateWrestlers = (body, id) => {
 
 export const getWrestlerRecord = async id => {
   let res = await fetch(
-    `https://5e2a46fe92edd600140de272.mockapi.io/api/v1/rikishi/${id}/records`
+    `/api/v1/rikishi/${id}/records`
   );
   return await res.json();
 };
 
 export const getDivisions = async () => {
   let res = await fetch(
-    "https://5e2a46fe92edd600140de272.mockapi.io/api/v1/divisions"
+    "/api/v1/divisions"
   );
   return await res.json();
 };
 
 export const getRanks = async () => {
   let res = await fetch(
-    "https://5e2a46fe92edd600140de272.mockapi.io/api/v1/ranks"
+    "/api/v1/ranks"
   );
   return await res.json();
 };
 
 export const getNationality = async () => {
   let res = await fetch(
-    "https://5e2a46fe92edd600140de272.mockapi.io/api/v1/ranks"
+    "/api/v1/ranks"
   );
   return await res.json();
 };
