@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getWrestlerRecord } from "./utils/api";
-import DisplayRecord from "./display-record";
+import React, { useEffect, useState } from 'react';
+import { getWrestlerRecord } from '../utils/api';
+import DisplayRecord from './display-record';
 
 const fetchWrestlerRecords = async (set, id) => {
   const data = await getWrestlerRecord(id);
-  if (data.length !== 0) {
-    set(data[0].record);
+  if (data && data.length !== 0) {
+    console.log('Record Data', data);
+    set(data.record);
   }
 };
 
@@ -19,7 +20,8 @@ const GetRecords = props => {
 
   if (record) {
     const years = Object.keys(record);
-    return years.map(y => {
+    const sortedYears = years.concat().sort((a, b) => b - a);
+    return sortedYears.map(y => {
       return <DisplayRecord key={y} data={record[y][0]} year={y} id={id} />;
     });
   }

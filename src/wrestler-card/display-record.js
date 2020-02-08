@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { capitalizeFirstLetter } from "./utils/helpers";
+import { capitalizeFirstLetter } from "../utils/helpers";
 import {
   ListContainer,
   Table,
@@ -9,7 +9,7 @@ import {
   TableBodyParagraph,
   TableBodyBadge,
   RecordYear
-} from "./styles/display-record";
+} from "../styles/display-record";
 
 const listData = record => {
   const objectEntries = Object.entries(record);

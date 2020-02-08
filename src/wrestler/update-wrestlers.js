@@ -1,14 +1,14 @@
-import React from "react";
-import WrestlerForm from "./wrestler-form";
-import { updateWrestlers } from "../utils/api";
-import { WrestlerFormContainer } from "../styles/wrestler-form";
+import React from 'react';
+import WrestlerForm from './wrestler-form';
+import { updateWrestlers } from '../utils/api';
+import { WrestlerFormContainer } from '../styles/wrestler-form';
 
 const UpdateWrestlers = props => {
-  const { wrestlerData } = props;
+  const { wrestlerData, onClose } = props;
 
   const onSubmit = (e, data) => {
     e.preventDefault();
-    console.log("Submitted", data);
+    console.log('Submitted', data);
     updateWrestlers(JSON.stringify(data), wrestlerData.id);
   };
 
@@ -18,8 +18,9 @@ const UpdateWrestlers = props => {
         <h2 style={{ marginTop: 0 }}>Update Wrestler</h2>
         <WrestlerForm
           wrestlerData={wrestlerData}
-          primaryButton="Update Wrestler"
+          primaryButton='Update Wrestler'
           primaryAction={onSubmit}
+          onClose={onClose}
         />
       </WrestlerFormContainer>
     );

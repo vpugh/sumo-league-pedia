@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import GetRecords from "./get-records";
-import { capitalizeFirstLetter } from "./utils/helpers";
-import Modal from "./modal/modal";
-import UpdateWrestlers from "./add-wrestler/update-wrestlers";
+import React, { useState } from 'react';
+import GetRecords from './get-records';
+import { capitalizeFirstLetter } from '../utils/helpers';
+import Modal from '../modal/modal';
+import UpdateWrestlers from '../wrestler/update-wrestlers';
 
 const getRecords = id => {
   return <GetRecords id={id} />;
@@ -23,8 +23,8 @@ const WrestlerCards = props => {
   return (
     <div
       style={{
-        border: "1px solid #e4e3e3",
-        background: "rgb(247, 247, 247)",
+        border: '1px solid #e4e3e3',
+        background: 'rgb(247, 247, 247)',
         borderRadius: 3,
         marginBottom: 20
       }}
@@ -32,45 +32,45 @@ const WrestlerCards = props => {
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
           padding: 10
         }}
       >
         <div>
-          <h3 style={{ margin: "0 0 5px 0" }}>
+          <h3 style={{ margin: '0 0 5px 0' }}>
             <strong>{w.name}</strong>
             <div
               style={{
                 marginLeft: 14,
-                display: "inline",
-                fontSize: ".8rem",
-                fontStyle: "italic"
+                display: 'inline',
+                fontSize: '.8rem',
+                fontStyle: 'italic'
               }}
               onClick={openModal}
             >
               Update Wrestler
             </div>
           </h3>
-          {w.status !== "retired" && (
-            <p style={{ margin: 0, fontStyle: "italic" }}>
-              {w.division}/{capitalizeFirstLetter(w.rankDirection)}{" "}
-              {capitalizeFirstLetter(w.rank)}{" "}
+          {w.status !== 'retired' && (
+            <p style={{ margin: 0, fontStyle: 'italic' }}>
+              {w.division}/{capitalizeFirstLetter(w.rankDirection)}{' '}
+              {capitalizeFirstLetter(w.rank)}{' '}
               {w.rankNumber && `#${w.rankNumber}`}
             </p>
           )}
         </div>
         <p style={{ lineHeight: 1.4, margin: 0 }}>
-          {w.nationality}, {w.age}
+          {w.placeOfBirth}, {w.age}
           <br />
-          {w.status === "active" ? (
-            <>Injured: {w.injured ? "Yes" : "No"}</>
+          {w.status === 'active' ? (
+            <>Injured: {w.injured ? 'Yes' : 'No'}</>
           ) : (
-            "Retired"
+            'Retired'
           )}
         </p>
       </div>
-      <p style={{ padding: "0 10px", marginBottom: ".5rem" }}>
+      <p style={{ padding: '0 10px', marginBottom: '.5rem' }}>
         Recent Career Record:
       </p>
       {getRecords(w.id)}

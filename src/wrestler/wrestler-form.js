@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { getDivisions, getRanks } from "../utils/api";
-import { capitalizeFirstLetter } from "../utils/helpers";
+import React, { useState, useEffect } from 'react';
+import { getDivisions, getRanks } from '../utils/api';
+import { capitalizeFirstLetter } from '../utils/helpers';
 import {
   Button,
   ButtonHolder,
   InputLabel,
   TextInput,
   SelectInput2
-} from "../styles/wrestler-form";
+} from '../styles/wrestler-form';
 
 const fetchDivisions = async set => {
   const data = await getDivisions();
@@ -20,27 +20,27 @@ const fetchRanks = async set => {
 };
 
 const WrestlerForm = props => {
-  const { primaryButton, primaryAction, wrestlerData } = props;
-  const [name, setName] = useState((wrestlerData && wrestlerData.name) || "");
+  const { primaryButton, primaryAction, wrestlerData, onClose } = props;
+  const [name, setName] = useState((wrestlerData && wrestlerData.name) || '');
   const [division, setDivision] = useState(
-    (wrestlerData && wrestlerData.division) || ""
+    (wrestlerData && wrestlerData.division) || ''
   );
-  const [rank, setRank] = useState((wrestlerData && wrestlerData.rank) || "");
+  const [rank, setRank] = useState((wrestlerData && wrestlerData.rank) || '');
   const [rankNumber, setRankNumber] = useState(
     (wrestlerData && wrestlerData.rankNumber) || null
   );
-  const [age, setAge] = useState((wrestlerData && wrestlerData.age) || "");
+  const [age, setAge] = useState((wrestlerData && wrestlerData.age) || '');
   const [rankDirection, setRankDirection] = useState(
-    (wrestlerData && wrestlerData.rankDirection) || ""
+    (wrestlerData && wrestlerData.rankDirection) || ''
   );
-  const [nationality, setNationality] = useState(
-    (wrestlerData && wrestlerData.nationality) || ""
+  const [placeOfBirth, setplaceOfBirth] = useState(
+    (wrestlerData && wrestlerData.placeOfBirth) || ''
   );
   const [injured, setInjured] = useState(
-    (wrestlerData && wrestlerData.injured) || "false"
+    (wrestlerData && wrestlerData.injured) || 'false'
   );
   const [status, setStatus] = useState(
-    (wrestlerData && wrestlerData.status) || "active"
+    (wrestlerData && wrestlerData.status) || 'active'
   );
 
   const [divisionList, setDivisionList] = useState();
@@ -62,7 +62,7 @@ const WrestlerForm = props => {
     rank,
     rankNumber,
     rankDirection,
-    nationality,
+    placeOfBirth,
     age: Number(age),
     injured: JSON.parse(injured),
     status
@@ -73,7 +73,7 @@ const WrestlerForm = props => {
       division &&
       rank &&
       rankDirection &&
-      nationality &&
+      placeOfBirth &&
       age &&
       injured &&
       status
@@ -82,25 +82,25 @@ const WrestlerForm = props => {
   return (
     <form onSubmit={e => primaryAction(e, data)}>
       <div>
-        <InputLabel htmlFor="name">Name</InputLabel>
+        <InputLabel htmlFor='name'>Name</InputLabel>
         <TextInput
-          type="text"
+          type='text'
           value={name}
-          id="name"
-          name="name"
+          id='name'
+          name='name'
           onChange={e => onChange(e, setName)}
         />
       </div>
       <div>
-        <InputLabel htmlFor="division">Division</InputLabel>
+        <InputLabel htmlFor='division'>Division</InputLabel>
         <SelectInput2>
           <select
             value={division}
-            name="division"
-            id="division"
+            name='division'
+            id='division'
             onChange={e => onChange(e, setDivision)}
           >
-            <option defaultValue value="">
+            <option defaultValue value=''>
               Pick a division
             </option>
             {divisionList &&
@@ -113,15 +113,15 @@ const WrestlerForm = props => {
         </SelectInput2>
       </div>
       <div>
-        <InputLabel htmlFor="rank">Rank</InputLabel>
+        <InputLabel htmlFor='rank'>Rank</InputLabel>
         <SelectInput2>
           <select
             value={rank}
-            id="rank"
-            name="rank"
+            id='rank'
+            name='rank'
             onChange={e => onChange(e, setRank)}
           >
-            <option defaultValue value="">
+            <option defaultValue value=''>
               Pick a rank
             </option>
             {rankList &&
@@ -132,11 +132,11 @@ const WrestlerForm = props => {
               ))}
           </select>
         </SelectInput2>
-        {(rank === "maegashira" || rank === "sekiwake") && (
+        {(rank === 'maegashira' || rank === 'sekiwake') && (
           <div>
-            <InputLabel htmlFor="rankNumber">Rank Number</InputLabel>
+            <InputLabel htmlFor='rankNumber'>Rank Number</InputLabel>
             <TextInput
-              name="rankNumber"
+              name='rankNumber'
               value={rankNumber}
               onChange={e => onChange(e, setRankNumber)}
             />
@@ -144,75 +144,77 @@ const WrestlerForm = props => {
         )}
       </div>
       <div>
-        <InputLabel htmlFor="rankDirection">Rank Direction</InputLabel>
+        <InputLabel htmlFor='rankDirection'>Rank Direction</InputLabel>
         <SelectInput2>
           <select
             value={rankDirection}
-            name="rankDirection"
-            id="rankDirection"
+            name='rankDirection'
+            id='rankDirection'
             onChange={e => onChange(e, setRankDirection)}
           >
-            <option defaultValue value="">
+            <option defaultValue value=''>
               Pick a direction
             </option>
-            <option value="east">East</option>
-            <option value="west">West</option>
+            <option value='east'>East</option>
+            <option value='west'>West</option>
           </select>
         </SelectInput2>
       </div>
       <div>
-        <InputLabel htmlFor="age">Age</InputLabel>
+        <InputLabel htmlFor='age'>Age</InputLabel>
         <TextInput
-          type="text"
+          type='text'
           value={age}
-          name="age"
+          name='age'
           onChange={e => onChange(e, setAge)}
         />
       </div>
       <div>
-        <InputLabel htmlFor="nationality">Nationality</InputLabel>
+        <InputLabel htmlFor='placeOfBirth'>Place of Birth</InputLabel>
         <TextInput
-          type="text"
-          value={nationality}
-          name="nationality"
-          onChange={e => onChange(e, setNationality)}
+          type='text'
+          value={placeOfBirth}
+          name='placeOfBirth'
+          onChange={e => onChange(e, setplaceOfBirth)}
         />
       </div>
       <div>
-        <InputLabel htmlFor="status">Status</InputLabel>
+        <InputLabel htmlFor='status'>Status</InputLabel>
         <SelectInput2>
           <select
             value={status}
-            name="status"
+            name='status'
             onChange={e => onChange(e, setStatus)}
           >
-            <option defaultValue value="">
+            <option defaultValue value=''>
               Pick a status
             </option>
-            <option value="active">Active</option>
-            <option value="retired">Retired</option>
+            <option value='active'>Active</option>
+            <option value='retired'>Retired</option>
           </select>
         </SelectInput2>
       </div>
       <div>
-        <InputLabel htmlFor="injured">Injured</InputLabel>
+        <InputLabel htmlFor='injured'>Injured</InputLabel>
         <SelectInput2>
           <select
             value={injured}
-            name="injured"
+            name='injured'
             onChange={e => onChange(e, setInjured)}
           >
-            <option defaultValue value="">
+            <option defaultValue value=''>
               Pick if injured
             </option>
-            <option value="false">False</option>
-            <option value="true">True</option>
+            <option value='false'>False</option>
+            <option value='true'>True</option>
           </select>
         </SelectInput2>
       </div>
       <ButtonHolder>
-        <Button cancel>Cancel</Button>
-        <Button primary disabled={!canAdd} type="submit">
+        <Button cancel onClick={onClose}>
+          Cancel
+        </Button>
+        <Button primary disabled={!canAdd} type='submit'>
           {primaryButton}
         </Button>
       </ButtonHolder>

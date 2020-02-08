@@ -1,8 +1,200 @@
 [
   {
-  "id": "209494",
-  "rikishiId": "1",
-  "record": {
+    "id": "209494",
+    "rikishiId": "1",
+    "record": {
+      "2016": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 12,
+            "loss": 3,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 14,
+            "loss": 1,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": 15,
+            "loss": 0,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 5,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 0,
+            "loss": 0,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 14,
+            "loss": 1,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2017": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 11,
+            "loss": 4,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 2,
+            "loss": 3,
+            "kyujo": 10,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": 15,
+            "loss": 0,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 14,
+            "loss": 1,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 0,
+            "loss": 0,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 14,
+            "loss": 1,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
+      "2018": [
+        {
+          "hatsu": {
+            "tournamentId": 1,
+            "tournamentPassed": true,
+            "wins": 10,
+            "loss": 4,
+            "kyujo": 1,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "haru": {
+            "tournamentId": 2,
+            "tournamentPassed": true,
+            "wins": 15,
+            "loss": 0,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          },
+          "natsu": {
+            "tournamentId": 3,
+            "tournamentPassed": true,
+            "wins": null,
+            "loss": null,
+            "kyujo": null,
+            "champion": false,
+            "participate": false,
+            "ongoing": false
+          },
+          "nagoya": {
+            "tournamentId": 4,
+            "tournamentPassed": true,
+            "wins": 12,
+            "loss": 3,
+            "kyujo": null,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "aki": {
+            "tournamentId": 5,
+            "tournamentPassed": true,
+            "wins": 0,
+            "loss": 2,
+            "kyujo": 13,
+            "champion": false,
+            "participate": true,
+            "ongoing": false
+          },
+          "kyushu": {
+            "tournamentId": 6,
+            "tournamentPassed": true,
+            "wins": 14,
+            "loss": 1,
+            "kyujo": null,
+            "champion": true,
+            "participate": true,
+            "ongoing": false
+          }
+        }
+      ],
       "2019": [
         {
           "hatsu": {
@@ -814,5 +1006,75 @@
         }
       ]
     }
+  },
+  {
+    "id": "34995",
+    "rikishiId": "7",
+    "record": {}
+  },
+  {
+    "id": "3040949",
+    "rikishiId": "8",
+    "record": {}
+  },
+  {
+    "id": "2049484",
+    "rikishiId": "9",
+    "record": {}
+  },
+  {
+    "id": "2399494",
+    "rikishiId": "10",
+    "record": {}
+  },
+  {
+    "id": "239494008",
+    "rikishiId": "11",
+    "record": {}
+  },
+  {
+    "id": "587499590",
+    "rikishiId": "12",
+    "record": {}
+  },
+  {
+    "id": "4997274884",
+    "rikishiId": "13",
+    "record": {}
+  },
+  {
+    "id": "487573994",
+    "rikishiId": "14",
+    "record": {}
+  },
+  {
+    "id": "284859949",
+    "rikishiId": "15",
+    "record": {}
+  },
+  {
+    "id": "1499583884",
+    "rikishiId": "16",
+    "record": {}
+  },
+  {
+    "id": "18499583994",
+    "rikishiId": "17",
+    "record": {}
+  },
+  {
+    "id": "599488289494",
+    "rikishiId": "18",
+    "record": {}
+  },
+  {
+    "id": "9958384398349834",
+    "rikishiId": "19",
+    "record": {}
+  },
+  {
+    "id": "95848499384",
+    "rikishiId": "20",
+    "record": {}
   }
 ]
