@@ -5,8 +5,7 @@ import DisplayRecord from './display-record';
 const fetchWrestlerRecords = async (set, id) => {
   const data = await getWrestlerRecord(id);
   if (data && data.length !== 0) {
-    console.log('Record Data', data);
-    set(data.record);
+    set(data.record.record);
   }
 };
 

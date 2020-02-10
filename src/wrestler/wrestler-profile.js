@@ -1,7 +1,6 @@
 import React from 'react';
 import { capitalizeFirstLetter } from '../utils/helpers';
 import GetRecords from '../wrestler-card/get-records';
-import SampleImg from '../images/sample-rikishi.jpg';
 
 const getRecords = id => {
   return <GetRecords id={id} />;
@@ -13,7 +12,7 @@ const WrestlerProfile = props => {
     <div style={{ padding: '15px 24px' }}>
       <h1>{wrestlerData.name} Profile</h1>
       <div style={{ display: 'flex' }}>
-        <img src={SampleImg} alt='sample rikishi' />
+        <img src={wrestlerData.img} alt='sample rikishi' />
         <div style={{ padding: 10 }}>
           <p>Ring Name: {wrestlerData.name}</p>
           {wrestlerData.status !== 'retired' && (

@@ -8,8 +8,7 @@ import TextProgress from './components/text-progress';
 
 const fetchWrestlers = async (set, loading) => {
   const data = await getWrestlers();
-  console.log('Data', data);
-  set(data);
+  set(data.rikishis);
   loading(false);
 };
 
