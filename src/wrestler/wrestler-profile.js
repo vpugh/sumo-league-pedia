@@ -12,7 +12,7 @@ const WrestlerProfile = props => {
     <div style={{ padding: '15px 24px' }}>
       <h1>{wrestlerData.name} Profile</h1>
       <div style={{ display: 'flex' }}>
-        <img src={wrestlerData.img} alt='sample rikishi' />
+        <img src={wrestlerData.img} style={{ width: 150, height: 'auto' }} alt='sample rikishi' />
         <div style={{ padding: 10 }}>
           <p>Ring Name: {wrestlerData.name}</p>
           {wrestlerData.status !== 'retired' && (

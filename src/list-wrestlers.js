@@ -1,10 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { getWrestlers } from './utils/api';
 import { WrestlerFormContainer } from './styles/wrestler-form';
+import { PhantomButton } from './styles/buttons';
+import { ListTitle } from './styles/list';
 import WrestlerCards from './wrestler-card/wrestler-cards-2';
-import Modal from './modal/modal';
+import ReactModal from 'react-modal';
 import AddWrestlers from './wrestler/add-wrestlers';
 import TextProgress from './components/text-progress';
+
+const style = {
+  overlay: {
+    background: 'rgba(0, 0, 0, .75)'
+  },
+  content: {
+    padding: 0
+  }
+};
+
+const filterByRank = (arr, rank) => {
+  return arr.filter(x => x.rank === rank);
+};
+
+const filterByRankDirection = (arr, rank) => {
+  return filterByRank(arr, rank).sort(
+    (a, b) => a.rankDirection > b.rankDirection
+  );
+};
 
 const fetchWrestlers = async (set, loading) => {
   const data = await getWrestlers();
@@ -29,18 +50,8 @@ const ListWrestlers = () => {
     fetchWrestlers(setWrestlers, setIsLoading);
   }, []);
 
-  const filterByRank = (arr, rank) => {
-    return arr.filter(x => x.rank === rank);
-  };
-
-  const filterByRankDirection = (arr, rank) => {
-    return filterByRank(arr, rank).sort(
-      (a, b) => a.rankDirection > b.rankDirection
-    );
-  };
-
   const filteredWrestlers = () => {
-    if (wrestlers) {
+    if (wrestlers && wrestlers.length > 0) {
       const yokozuna = filterByRankDirection(wrestlers, 'yokozuna');
       const ozeki = filterByRankDirection(wrestlers, 'ozeki');
       const sekiwake = filterByRankDirection(wrestlers, 'sekiwake');
@@ -60,28 +71,30 @@ const ListWrestlers = () => {
 
   return (
     <WrestlerFormContainer>
-      <h2 style={{ marginTop: 0 }}>List of Sumo Wrestlers</h2>
-      <p>Currently will be Makuuchi division</p>
+      <ListTitle>List of Sumo Wrestlers</ListTitle>
       {!isLoading &&
         wrestlers &&
+        wrestlers.length > 0 &&
         filteredWrestlers().map(w => <WrestlerCards w={w} key={w.id} />)}
       {isLoading && <TextProgress text={'Loading Wrestlers'} />}
-      <div
-        style={{
-          border: '1px solid #ddd',
-          padding: '14px 0',
-          textAlign: 'center',
-          borderRadius: 4
-        }}
-        onClick={openModal}
+      <PhantomButton onClick={openModal}>Add Wrestler</PhantomButton>
+      <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel={'Add Wrestler Modal'}
+        shouldCloseOnOverlayClick={true}
+        style={style}
       >
-        Add Wrestler
-      </div>
-      <Modal show={isModalOpen} handleClose={closeModal}>
-        <AddWrestlers />
-      </Modal>
+        <AddWrestlers
+          closeModal={closeModal}
+          wrestlers={wrestlers}
+          setWrestlers={setWrestlers}
+        />
+      </ReactModal>
     </WrestlerFormContainer>
   );
 };
 
 export default ListWrestlers;
+
+ListWrestlers.whyDidYouRender = true;

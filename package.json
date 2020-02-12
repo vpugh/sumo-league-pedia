@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@welldone-software/why-did-you-render": "^4.0.3",
     "faker": "^4.1.0",
     "moment": "2.24.0",
     "react": "16.12.0",

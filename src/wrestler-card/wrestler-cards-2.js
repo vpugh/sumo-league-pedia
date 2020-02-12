@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
 import { capitalizeFirstLetter } from '../utils/helpers';
+import { Button } from '../styles/buttons';
+import {
+  RegularType,
+  BoldType,
+  FlexContainer,
+  CardContainer
+} from '../styles/wrestler-card';
 import ReactModal from 'react-modal';
 import UpdateWrestlers from '../wrestler/update-wrestlers';
 import WrestlerProfile from '../wrestler/wrestler-profile';
 
+const style = {
+  overlay: {
+    background: 'rgba(0, 0, 0, .75)'
+  },
+  content: {
+    padding: 0
+  }
+};
+
 const WrestlerCards = props => {
   const { w } = props;
+  console.log('Wrestler Card Rerun', w);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -28,108 +45,39 @@ const WrestlerCards = props => {
   };
 
   return (
-    <div
-      style={{
-        border: '1px solid #e4e3e3',
-        background: 'rgb(247, 247, 247)',
-        borderRadius: 3,
-        marginBottom: 10
-      }}
-      key={w.name}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          textAlign: 'left',
-          padding: 10
-        }}
-      >
-        <p
-          style={{
-            margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            flexBasis: '100%',
-            flex: 2,
-            fontWeight: 'bold'
-          }}
-        >
-          {w.name}
-        </p>
-        <p
-          style={{
-            margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            flexBasis: '100%',
-            flex: 2
-          }}
-        >
+    <CardContainer>
+      <FlexContainer>
+        <BoldType>{w.name}</BoldType>
+        <RegularType>
           {capitalizeFirstLetter(w.rankDirection)}{' '}
           {capitalizeFirstLetter(w.rank)} {w.rankNumber && `#${w.rankNumber}`}
-        </p>
-        <p
-          style={{
-            margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            flexBasis: '100%',
-            flex: 2
-          }}
-        >
+        </RegularType>
+        <RegularType>
           {w.placeOfBirth} | {w.age}
-        </p>
-        <>
-          <button
-            onClick={openModal}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              flexBasis: '100%',
-              flex: 1,
-              alignItems: 'center',
-              color: '#fff',
-              background: 'red'
-            }}
-          >
+        </RegularType>
+        <div>
+          <Button primary onClick={openModal}>
             View Profile
-          </button>
-          <button
-            onClick={startEditing}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              flexBasis: '100%',
-              flex: 1,
-              alignItems: 'center',
-              color: '#fff',
-              background: 'red'
-            }}
-          >
+          </Button>
+          <Button tertiary onClick={startEditing}>
             Edit
-          </button>
-        </>
-      </div>
+          </Button>
+        </div>
+      </FlexContainer>
       <ReactModal
         isOpen={isModalOpen}
         onRequestClose={isEditing ? stopEditing : closeModal}
         contentLabel={'Update Wrestler Modal'}
         shouldCloseOnOverlayClick={true}
-        style={{
-          overlay: {
-            background: 'rgba(0, 0, 0, .75)'
-          },
-          content: {
-            padding: 0
-          }
-        }}
+        style={style}
       >
         {!isEditing && <WrestlerProfile wrestlerData={w} />}
         {isEditing && <UpdateWrestlers wrestlerData={w} onClose={closeModal} />}
       </ReactModal>
-    </div>
+    </CardContainer>
   );
 };
 
 export default WrestlerCards;
+
+WrestlerCards.whyDidYouRender = true;

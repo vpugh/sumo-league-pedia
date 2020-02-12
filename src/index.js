@@ -7,6 +7,11 @@ import App from './App';
 
 import { Server, Model, Factory } from 'miragejs';
 
+if (process.env.NODE_ENV === 'development') {
+  const whyDidYouRender = require('@welldone-software/why-did-you-render');
+  whyDidYouRender(React);
+}
+
 const basho = ['hatsu', 'haru', 'natsu', 'nagoya', 'aki', 'kyushu'];
 const rikishiRanks = [
   'yokozuna',
@@ -98,6 +103,11 @@ new Server({
     this.namespace = '/api';
 
     this.get('/v1/rikishi');
+
+    this.post('/v1/rikishi', (schema, request) => {
+      let attrs = JSON.parse(request.requestBody);
+      return schema.rikishis.create(attrs);
+    });
 
     this.put('/v1/rikishi/:id');
 
