@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { getWrestlers } from './utils/api';
 import { WrestlerFormContainer } from './styles/wrestler-form';
 import { PhantomButton } from './styles/buttons';
@@ -33,24 +33,28 @@ const fetchWrestlers = async (set, loading) => {
   loading(false);
 };
 
+const setModal = (func, state) => {
+  func(state);
+};
+
 const ListWrestlers = () => {
   const [wrestlers, setWrestlers] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    setIsModalOpen(true);
+    setModal(setIsModalOpen, true);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setModal(setIsModalOpen, false);
   };
 
   useEffect(() => {
     fetchWrestlers(setWrestlers, setIsLoading);
   }, []);
 
-  const filteredWrestlers = () => {
+  const filteredWrestlers = useCallback(() => {
     if (wrestlers && wrestlers.length > 0) {
       const yokozuna = filterByRankDirection(wrestlers, 'yokozuna');
       const ozeki = filterByRankDirection(wrestlers, 'ozeki');
@@ -67,14 +71,12 @@ const ListWrestlers = () => {
         );
       return yokozuna.concat(ozeki, sekiwake, komusubi, maegashira);
     }
-  };
+  }, [wrestlers]);
 
   return (
     <WrestlerFormContainer>
       <ListTitle>List of Sumo Wrestlers</ListTitle>
       {!isLoading &&
-        wrestlers &&
-        wrestlers.length > 0 &&
         filteredWrestlers().map(w => <WrestlerCards w={w} key={w.id} />)}
       {isLoading && <TextProgress text={'Loading Wrestlers'} />}
       <PhantomButton onClick={openModal}>Add Wrestler</PhantomButton>
@@ -95,6 +97,19 @@ const ListWrestlers = () => {
   );
 };
 
-export default ListWrestlers;
+// export default ListWrestlers;
 
-ListWrestlers.whyDidYouRender = true;
+const memoizedComponent = React.memo(ListWrestlers, (prevProps, nextProps) => {
+  console.log(prevProps, nextProps, prevProps.thing === nextProps.thing);
+
+  /*
+      When using this function you always need to return
+      a Boolean. For now we'll say the props are NOT equal 
+      which means the component should rerender.
+    */
+  return false;
+});
+
+export default memoizedComponent;
+
+memoizedComponent.whyDidYouRender = true;

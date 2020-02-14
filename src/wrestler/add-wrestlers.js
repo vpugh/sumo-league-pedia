@@ -27,6 +27,19 @@ const AddWrestlers = props => {
   );
 };
 
-export default AddWrestlers;
+// export default AddWrestlers;
+
+const memoizedComponent = React.memo(AddWrestlers, (prevProps, nextProps) => {
+  console.log('Prop Comparison', prevProps.thing === nextProps.thing);
+
+  /*
+      When using this function you always need to return
+      a Boolean. For now we'll say the props are NOT equal 
+      which means the component should rerender.
+    */
+  return false;
+});
+
+export default memoizedComponent;
 
 AddWrestlers.whyDidYouRender = true;

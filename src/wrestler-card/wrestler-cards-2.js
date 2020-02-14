@@ -20,9 +20,15 @@ const style = {
   }
 };
 
+const isObject = val => {
+  if (val === null) {
+    return false;
+  }
+  return typeof val === 'function' || typeof val === 'object';
+};
+
 const WrestlerCards = props => {
   const { w } = props;
-  console.log('Wrestler Card Rerun', w);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -44,40 +50,64 @@ const WrestlerCards = props => {
     setIsModalOpen(false);
   };
 
-  return (
-    <CardContainer>
-      <FlexContainer>
-        <BoldType>{w.name}</BoldType>
-        <RegularType>
-          {capitalizeFirstLetter(w.rankDirection)}{' '}
-          {capitalizeFirstLetter(w.rank)} {w.rankNumber && `#${w.rankNumber}`}
-        </RegularType>
-        <RegularType>
-          {w.placeOfBirth} | {w.age}
-        </RegularType>
-        <div>
-          <Button primary onClick={openModal}>
-            View Profile
-          </Button>
-          <Button tertiary onClick={startEditing}>
-            Edit
-          </Button>
-        </div>
-      </FlexContainer>
-      <ReactModal
-        isOpen={isModalOpen}
-        onRequestClose={isEditing ? stopEditing : closeModal}
-        contentLabel={'Update Wrestler Modal'}
-        shouldCloseOnOverlayClick={true}
-        style={style}
-      >
-        {!isEditing && <WrestlerProfile wrestlerData={w} />}
-        {isEditing && <UpdateWrestlers wrestlerData={w} onClose={closeModal} />}
-      </ReactModal>
-    </CardContainer>
-  );
+  const closeFunction = isEditing ? stopEditing : closeModal;
+
+  if (w && isObject(w)) {
+    return (
+      <CardContainer>
+        <FlexContainer>
+          <BoldType>{w.name}</BoldType>
+          <RegularType>
+            {capitalizeFirstLetter(w.rankDirection)}{' '}
+            {capitalizeFirstLetter(w.rank)} {w.rankNumber && `#${w.rankNumber}`}
+          </RegularType>
+          <RegularType>
+            {w.placeOfBirth} | {w.age}
+          </RegularType>
+          <div>
+            <Button primary onClick={openModal}>
+              View Profile
+            </Button>
+            <Button tertiary onClick={startEditing}>
+              Edit
+            </Button>
+          </div>
+        </FlexContainer>
+        <ReactModal
+          isOpen={isModalOpen}
+          onRequestClose={closeFunction}
+          contentLabel={'Update Wrestler Modal'}
+          shouldCloseOnOverlayClick={true}
+          style={style}
+        >
+          {!isEditing && isModalOpen && <WrestlerProfile wrestlerData={w} />}
+          {isEditing && isModalOpen && (
+            <UpdateWrestlers wrestlerData={w} onClose={closeModal} />
+          )}
+        </ReactModal>
+      </CardContainer>
+    );
+  }
+  return null;
 };
 
-export default WrestlerCards;
+// export default WrestlerCards;
 
-WrestlerCards.whyDidYouRender = true;
+const memoizedComponent = React.memo(WrestlerCards, (prevProps, nextProps) => {
+  console.log(
+    'Prop Comparison',
+    prevProps,
+    nextProps,
+    prevProps.thing === nextProps.thing
+  );
+
+  /*
+      When using this function you always need to return
+      a Boolean. For now we'll say the props are NOT equal 
+      which means the component should rerender.
+    */
+  return false;
+});
+
+export default memoizedComponent;
+memoizedComponent.whyDidYouRender = true;
