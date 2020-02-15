@@ -1,57 +1,14 @@
-import React, { useState } from 'react';
-import { capitalizeFirstLetter } from '../utils/helpers';
-import { Button } from '../styles/buttons';
+import React from 'react';
+import { capitalizeFirstLetter, isObject } from '../utils/helpers';
+import WrestlerProfileBM from './wrestler-profile-bm';
 import {
   RegularType,
   BoldType,
   FlexContainer,
   CardContainer
 } from '../styles/wrestler-card';
-import ReactModal from 'react-modal';
-import UpdateWrestlers from '../wrestler/update-wrestlers';
-import WrestlerProfile from '../wrestler/wrestler-profile';
 
-const style = {
-  overlay: {
-    background: 'rgba(0, 0, 0, .75)'
-  },
-  content: {
-    padding: 0
-  }
-};
-
-const isObject = val => {
-  if (val === null) {
-    return false;
-  }
-  return typeof val === 'function' || typeof val === 'object';
-};
-
-const WrestlerCards = props => {
-  const { w } = props;
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const startEditing = () => {
-    setIsEditing(true);
-    setIsModalOpen(true);
-  };
-
-  const stopEditing = () => {
-    setIsEditing(false);
-    setIsModalOpen(false);
-  };
-
-  const closeFunction = isEditing ? stopEditing : closeModal;
-
+const WrestlerCards = ({ w }) => {
   if (w && isObject(w)) {
     return (
       <CardContainer>
@@ -64,27 +21,8 @@ const WrestlerCards = props => {
           <RegularType>
             {w.placeOfBirth} | {w.age}
           </RegularType>
-          <div>
-            <Button primary onClick={openModal}>
-              View Profile
-            </Button>
-            <Button tertiary onClick={startEditing}>
-              Edit
-            </Button>
-          </div>
+          <WrestlerProfileBM w={w} />
         </FlexContainer>
-        <ReactModal
-          isOpen={isModalOpen}
-          onRequestClose={closeFunction}
-          contentLabel={'Update Wrestler Modal'}
-          shouldCloseOnOverlayClick={true}
-          style={style}
-        >
-          {!isEditing && isModalOpen && <WrestlerProfile wrestlerData={w} />}
-          {isEditing && isModalOpen && (
-            <UpdateWrestlers wrestlerData={w} onClose={closeModal} />
-          )}
-        </ReactModal>
       </CardContainer>
     );
   }

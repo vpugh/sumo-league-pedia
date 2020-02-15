@@ -32,14 +32,22 @@ new Server({
   },
   factories: {
     rikishi: Factory.extend({
-      name(i) {
+      ringName() {
+        return Faker.internet.userName();
+      },
+      name() {
         return Faker.name.firstName();
       },
       division: 'Makuuchi',
       rank() {
         return rikishiRanks[Math.floor(Math.random() * rikishiRanks.length)];
       },
-      img: Faker.image.avatar(),
+      img() {
+        return Faker.image.avatar();
+      },
+      dob() {
+        return Faker.date.past(30);
+      },
       rankNumber() {
         let min = 1;
         let max = 17;
