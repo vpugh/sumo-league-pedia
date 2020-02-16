@@ -5,7 +5,7 @@ import Faker from 'faker';
 
 import App from './App';
 
-import { Server, Model, Factory } from 'miragejs';
+import { Server, Model, Factory, belongsTo } from 'miragejs';
 
 if (process.env.NODE_ENV === 'development') {
   const whyDidYouRender = require('@welldone-software/why-did-you-render');
@@ -28,7 +28,9 @@ ReactModal.setAppElement('#root');
 new Server({
   models: {
     rikishi: Model,
-    record: Model
+    record: Model.extend({
+      rikishi: belongsTo()
+    })
   },
   factories: {
     rikishi: Factory.extend({
@@ -36,7 +38,7 @@ new Server({
         return Faker.internet.userName();
       },
       name() {
-        return Faker.name.firstName();
+        return `${Faker.name.firstName()} ${Faker.name.lastName()}`;
       },
       division: 'Makuuchi',
       rank() {
@@ -46,12 +48,16 @@ new Server({
         return Faker.image.avatar();
       },
       dob() {
-        return Faker.date.past(30);
+        return Faker.date.past(50).toLocaleDateString();
       },
       rankNumber() {
         let min = 1;
         let max = 17;
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        if (this.rank === 'maegashira') {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        } else {
+          return null;
+        }
       },
       rankDirection() {
         return direction[Math.floor(Math.random() * direction.length)];
@@ -68,9 +74,9 @@ new Server({
       status: 'active'
     }),
     record: Factory.extend({
-      rikishiId(i) {
-        return i;
-      },
+      // rikishiId(i) {
+      //   return i;
+      // },
       record() {
         let minYear = 2010;
         let maxYear = 2020;
@@ -143,8 +149,9 @@ new Server({
   },
 
   seeds(server) {
-    server.createList('rikishi', 10);
-    server.createList('record', 20);
+    server.createList('rikishi', 10).forEach(rikishi => {
+      server.createList('record', 6, { rikishi });
+    });
   }
 });
 

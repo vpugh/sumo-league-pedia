@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { capitalizeFirstLetter } from "../utils/helpers";
+import React, { useState } from 'react';
+import { capitalizeFirstLetter } from '../utils/helpers';
 import {
   ListContainer,
   Table,
@@ -9,7 +9,7 @@ import {
   TableBodyParagraph,
   TableBodyBadge,
   RecordYear
-} from "../styles/display-record";
+} from '../styles/display-record';
 
 const listData = record => {
   const objectEntries = Object.entries(record);
@@ -37,13 +37,13 @@ const listData = record => {
 
               const backgroundColor = () => {
                 if (hasKachiKoshi) {
-                  return "green";
+                  return 'green';
                 }
                 if (hasMakeKoshi) {
-                  return "red";
+                  return 'red';
                 }
                 if (withdrew) {
-                  return "yellow";
+                  return 'yellow';
                 }
               };
               return (
@@ -95,10 +95,11 @@ const DisplayRecord = props => {
   const [showTable, setShowTable] = useState(false);
 
   return (
-    <div onClick={() => setShowTable(!showTable)}>
-      <RecordYear>{year}</RecordYear>
-      {showTable && data && listData(data)}
-    </div>
+    // <div onClick={() => setShowTable(!showTable)}>
+    //   <RecordYear>{year}</RecordYear>
+    //   {showTable && data && listData(data)}
+    // </div>
+    <button style={{ background: '#3e496b', color: '#fff', padding: '6px 23px', fontSize: '1rem', borderRadius: 4, border: 'none' }}>{year}</button>
   );
 };
 

@@ -2,10 +2,6 @@ import React from 'react';
 import { capitalizeFirstLetter, boldType } from '../utils/helpers';
 import GetRecords from '../wrestler-card/get-records';
 
-const getRecords = id => {
-  return <GetRecords id={id} />;
-};
-
 const WrestlerProfile = props => {
   const { wrestlerData } = props;
   const {
@@ -23,18 +19,19 @@ const WrestlerProfile = props => {
     age,
     id
   } = wrestlerData;
-  const date = Date(dob);
   return (
     <div style={{ padding: '15px 24px' }}>
-      <h1>{name} Profile</h1>
-      <div style={{ display: 'flex' }}>
+      <h1>Wrestler Profile</h1>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <img
           src={img}
-          style={{ width: 150, height: 'auto' }}
+          style={{ width: 207, height: 364 }}
           alt='sample rikishi'
         />
-        <div style={{ padding: 10 }}>
-          <p>
+        <div
+          style={{ padding: '0 20px', color: '#EB9E05', fontSize: '1.13rem' }}
+        >
+          <p style={{ marginTop: 0 }}>
             {boldType('Name')} {name}
             <br /> {boldType('Ring Name')} {ringName}
             <br /> {boldType('Division')} {division}
@@ -50,19 +47,19 @@ const WrestlerProfile = props => {
               : 'Retired'}
           </p>
           <p style={{ lineHeight: 1.4, margin: 0 }}>
-            {boldType('Date of Birth')} {date}
+            {boldType('Date of Birth')} {dob}
             <br />
             {boldType('Place of Birth')} {placeOfBirth}
             <br />
             {boldType('Age')} {age}
             <br />
           </p>
+          <p style={{ marginBottom: '.5rem', color: '#564F42' }}>
+            Tournament Record:
+          </p>
+          <GetRecords id={id} />
         </div>
       </div>
-      <p style={{ padding: '0 10px', marginBottom: '.5rem' }}>
-        Recent Career Record:
-      </p>
-      {getRecords(id)}
     </div>
   );
 };
