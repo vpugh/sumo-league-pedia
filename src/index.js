@@ -87,16 +87,26 @@ new Server({
         const generateRecord = index => {
           let min = 0;
           let max = 15;
-          const wins = Math.floor(Math.random() * (max - min + 1)) + min;
-          const loss = max - wins;
+          const participated = Math.random() >= 0.5;
+          let wins;
+          let loss;
+          if (participated) {
+            wins = Math.floor(Math.random() * (max - min + 1)) + min;
+            const lossMax = max - wins;
+            loss = Math.floor(Math.random() * (lossMax - min + 1)) + min;
+          } else {
+            wins = null;
+            loss = null;
+          }
           return {
             tournamentId: index,
             tournamentPassed: true,
             wins,
             loss,
-            kyujo: wins + loss === 15 ? null : wins + loss - 15,
-            champion: false,
-            participate: true,
+            kyujo:
+              wins + loss === 15 || !participated ? null : 15 - (wins + loss),
+            champion: wins >= 14 ? true : false,
+            participate: participated,
             ongoing: false
           };
         };
