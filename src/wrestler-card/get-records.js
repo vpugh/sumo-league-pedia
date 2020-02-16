@@ -21,7 +21,7 @@ const GetRecords = props => {
     const years = Object.keys(record);
     const sortedYears = years.concat().sort((a, b) => b - a);
     return sortedYears.map(y => {
-      return <DisplayRecord key={y} data={record[y][0]} year={y} id={id} />;
+      return <DisplayRecord key={y} data={record[y]} year={y} id={id} />;
     });
   }
   return null;

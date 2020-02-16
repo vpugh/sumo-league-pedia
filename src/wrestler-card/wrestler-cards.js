@@ -1,84 +1,51 @@
-import React, { useState } from 'react';
-import GetRecords from './get-records';
-import { capitalizeFirstLetter } from '../utils/helpers';
-import Modal from '../modal/modal';
-import UpdateWrestlers from '../wrestler/update-wrestlers';
+import React from 'react';
+import { capitalizeFirstLetter, isObject } from '../utils/helpers';
+import WrestlerProfileBM from './wrestler-profile-bm';
+import {
+  RegularType,
+  BoldType,
+  FlexContainer,
+  CardContainer
+} from '../styles/wrestler-card';
 
-const getRecords = id => {
-  return <GetRecords id={id} />;
+const WrestlerCards = ({ w }) => {
+  if (w && isObject(w)) {
+    return (
+      <CardContainer>
+        <FlexContainer>
+          <BoldType>{w.name}</BoldType>
+          <RegularType>
+            {capitalizeFirstLetter(w.rankDirection)}{' '}
+            {capitalizeFirstLetter(w.rank)} {w.rankNumber && `#${w.rankNumber}`}
+          </RegularType>
+          <RegularType>
+            {w.placeOfBirth} | {w.age}
+          </RegularType>
+          <WrestlerProfileBM w={w} />
+        </FlexContainer>
+      </CardContainer>
+    );
+  }
+  return null;
 };
 
-const WrestlerCards = props => {
-  const { w } = props;
-  const [isModalOpen, setIsModalOpen] = useState(false);
+// export default WrestlerCards;
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <div
-      style={{
-        border: '1px solid #e4e3e3',
-        background: 'rgb(247, 247, 247)',
-        borderRadius: 3,
-        marginBottom: 20
-      }}
-      key={w.name}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: 10
-        }}
-      >
-        <div>
-          <h3 style={{ margin: '0 0 5px 0' }}>
-            <strong>{w.name}</strong>
-            <div
-              style={{
-                marginLeft: 14,
-                display: 'inline',
-                fontSize: '.8rem',
-                fontStyle: 'italic'
-              }}
-              onClick={openModal}
-            >
-              Update Wrestler
-            </div>
-          </h3>
-          {w.status !== 'retired' && (
-            <p style={{ margin: 0, fontStyle: 'italic' }}>
-              {w.division}/{capitalizeFirstLetter(w.rankDirection)}{' '}
-              {capitalizeFirstLetter(w.rank)}{' '}
-              {w.rankNumber && `#${w.rankNumber}`}
-            </p>
-          )}
-        </div>
-        <p style={{ lineHeight: 1.4, margin: 0 }}>
-          {w.placeOfBirth}, {w.age}
-          <br />
-          {w.status === 'active' ? (
-            <>Injured: {w.injured ? 'Yes' : 'No'}</>
-          ) : (
-            'Retired'
-          )}
-        </p>
-      </div>
-      <p style={{ padding: '0 10px', marginBottom: '.5rem' }}>
-        Recent Career Record:
-      </p>
-      {getRecords(w.id)}
-      <Modal show={isModalOpen} handleClose={closeModal}>
-        <UpdateWrestlers wrestlerData={w} />
-      </Modal>
-    </div>
+const memoizedComponent = React.memo(WrestlerCards, (prevProps, nextProps) => {
+  console.log(
+    'Prop Comparison',
+    prevProps,
+    nextProps,
+    prevProps.thing === nextProps.thing
   );
-};
 
-export default WrestlerCards;
+  /*
+      When using this function you always need to return
+      a Boolean. For now we'll say the props are NOT equal 
+      which means the component should rerender.
+    */
+  return false;
+});
+
+export default memoizedComponent;
+memoizedComponent.whyDidYouRender = true;

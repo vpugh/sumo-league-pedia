@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { WrestlerFormContainer } from './styles/wrestler-form';
 import { ListTitle } from './styles/list';
-import WrestlerCards from './wrestler-card/wrestler-cards-2';
+import WrestlerCards from './wrestler-card/wrestler-cards';
 import TextProgress from './components/text-progress';
 import AddWrestlerButtonModal from './wrestler-card/add-wrestler-bm';
 import { filteredWrestlers } from './utils/helpers';

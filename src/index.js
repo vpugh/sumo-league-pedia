@@ -74,9 +74,9 @@ new Server({
       status: 'active'
     }),
     record: Factory.extend({
-      // rikishiId(i) {
-      //   return i;
-      // },
+      rikishiId(i) {
+        return `${i + 1}`;
+      },
       record() {
         let minYear = 2010;
         let maxYear = 2020;
@@ -150,7 +150,7 @@ new Server({
 
   seeds(server) {
     server.createList('rikishi', 10).forEach(rikishi => {
-      server.createList('record', 6, { rikishi });
+      server.createList('record', 1, { rikishiId: rikishi.id });
     });
   }
 });

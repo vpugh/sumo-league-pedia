@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { capitalizeFirstLetter } from '../utils/helpers';
+import ReactModal from 'react-modal';
 import {
   ListContainer,
   Table,
@@ -7,28 +8,29 @@ import {
   TableBody,
   TableBodyContainer,
   TableBodyParagraph,
-  TableBodyBadge,
-  RecordYear
+  TableBodyBadge
 } from '../styles/display-record';
 
 const listData = record => {
-  const objectEntries = Object.entries(record);
   return (
     <ListContainer>
       <Table>
         <thead>
           <tr>
-            {objectEntries.map(obj => (
-              <TableHeader key={obj[0]}>
-                {capitalizeFirstLetter(obj[0])}
-              </TableHeader>
-            ))}
+            {record.map(obj => {
+              const title = Object.entries(obj)[0][0];
+              return (
+                <TableHeader key={title}>
+                  {capitalizeFirstLetter(title)}
+                </TableHeader>
+              );
+            })}
           </tr>
         </thead>
         <tbody>
           <tr>
-            {objectEntries.map(obj => {
-              const o = obj[1];
+            {record.map(obj => {
+              const o = Object.entries(obj)[0][1];
               const hasKachiKoshi = Boolean(o.wins && o.wins >= 8);
               const hasMakeKoshi = Boolean(o.loss && o.loss >= 8);
               const withdrew = Boolean(o.kyujo);
@@ -49,7 +51,7 @@ const listData = record => {
               return (
                 <TableBody
                   border={backgroundColor()}
-                  key={`${obj[0]} ${obj[1].id}`}
+                  key={`${Object.entries(obj)[0]} ${Object.entries(obj)[0].id}`}
                 >
                   <TableBodyContainer>
                     {hasParticipated && (
@@ -92,14 +94,42 @@ const listData = record => {
 const DisplayRecord = props => {
   const { data, year } = props;
 
-  const [showTable, setShowTable] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
-    // <div onClick={() => setShowTable(!showTable)}>
-    //   <RecordYear>{year}</RecordYear>
-    //   {showTable && data && listData(data)}
-    // </div>
-    <button style={{ background: '#3e496b', color: '#fff', padding: '6px 23px', fontSize: '1rem', borderRadius: 4, border: 'none' }}>{year}</button>
+    <div>
+      <button
+        onClick={openModal}
+        style={{
+          background: '#3e496b',
+          color: '#fff',
+          padding: '6px 23px',
+          fontSize: '1rem',
+          borderRadius: 4,
+          border: 'none'
+        }}
+      >
+        {year}
+      </button>
+      <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel={'Display Wrestler Record'}
+        shouldCloseOnOverlayClick={true}
+        // style={style}
+      >
+        <button onClick={closeModal}>Close Modal</button>
+        {data && listData(data)}
+      </ReactModal>
+    </div>
   );
 };
 
