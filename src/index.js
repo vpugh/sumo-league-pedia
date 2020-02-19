@@ -5,7 +5,14 @@ import Faker from 'faker';
 
 import App from './App';
 
-import { Server, Model, Factory, belongsTo } from 'miragejs';
+import {
+  Server,
+  Model,
+  Factory,
+  belongsTo,
+  Serializer,
+  hasMany
+} from 'miragejs';
 
 if (process.env.NODE_ENV === 'development') {
   const whyDidYouRender = require('@welldone-software/why-did-you-render');
@@ -25,9 +32,20 @@ const locations = ['Japan', 'Mongolia', 'Georgia', 'Brazil'];
 
 ReactModal.setAppElement('#root');
 
+const ApplicationSerializer = Serializer.extend();
+
 new Server({
+  serializers: {
+    application: ApplicationSerializer,
+    rikishi: ApplicationSerializer.extend({
+      include: ['record'],
+      embed: true
+    })
+  },
   models: {
-    rikishi: Model,
+    rikishi: Model.extend({
+      record: hasMany()
+    }),
     record: Model.extend({
       rikishi: belongsTo()
     })
@@ -160,7 +178,7 @@ new Server({
 
   seeds(server) {
     server.createList('rikishi', 10).forEach(rikishi => {
-      server.createList('record', 1, { rikishiId: rikishi.id });
+      server.createList('record', 6, { rikishiId: rikishi.id });
     });
   }
 });

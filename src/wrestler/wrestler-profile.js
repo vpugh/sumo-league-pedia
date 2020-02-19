@@ -1,6 +1,7 @@
 import React from 'react';
 import { capitalizeFirstLetter, boldType } from '../utils/helpers';
 import GetRecords from '../wrestler-card/get-records';
+import DisplayRecord from '../wrestler-card/display-record';
 
 const WrestlerProfile = props => {
   const { wrestlerData } = props;
@@ -17,8 +18,13 @@ const WrestlerProfile = props => {
     dob,
     placeOfBirth,
     age,
-    id
+    id,
+    record
   } = wrestlerData;
+
+  const years = Object.keys(record);
+  const sortedYears = years.concat().sort((a, b) => b - a);
+
   return (
     <div style={{ padding: '15px 24px' }}>
       <h1>Wrestler Profile</h1>
@@ -57,7 +63,14 @@ const WrestlerProfile = props => {
           <p style={{ marginBottom: '.5rem', color: '#564F42' }}>
             Tournament Record:
           </p>
-          <GetRecords id={id} />
+          {/* <GetRecords id={id} /> */}
+          {console.log(record, years)}
+          {/* {record &&
+            sortedYears.map(y => {
+              return (
+                <DisplayRecord key={y} data={record[y]} year={y} id={id} />
+              );
+            })} */}
         </div>
       </div>
     </div>
