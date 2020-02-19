@@ -19,6 +19,12 @@ if (process.env.NODE_ENV === 'development') {
   whyDidYouRender(React);
 }
 
+const randomRecords = () => {
+  const min = 1;
+  const max = 6;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 const basho = ['hatsu', 'haru', 'natsu', 'nagoya', 'aki', 'kyushu'];
 const rikishiRanks = [
   'yokozuna',
@@ -178,7 +184,7 @@ new Server({
 
   seeds(server) {
     server.createList('rikishi', 10).forEach(rikishi => {
-      server.createList('record', 6, { rikishiId: rikishi.id });
+      server.createList('record', randomRecords(), { rikishiId: rikishi.id });
     });
   }
 });

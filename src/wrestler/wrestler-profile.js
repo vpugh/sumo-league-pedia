@@ -1,6 +1,5 @@
 import React from 'react';
 import { capitalizeFirstLetter, boldType } from '../utils/helpers';
-import GetRecords from '../wrestler-card/get-records';
 import DisplayRecord from '../wrestler-card/display-record';
 
 const WrestlerProfile = props => {
@@ -63,14 +62,26 @@ const WrestlerProfile = props => {
           <p style={{ marginBottom: '.5rem', color: '#564F42' }}>
             Tournament Record:
           </p>
-          {/* <GetRecords id={id} /> */}
-          {console.log(record, years)}
-          {/* {record &&
-            sortedYears.map(y => {
-              return (
-                <DisplayRecord key={y} data={record[y]} year={y} id={id} />
-              );
-            })} */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              gridGap: '15px 0'
+            }}
+          >
+            {record &&
+              record.map(rec => {
+                const year = Object.keys(rec.record);
+                return (
+                  <DisplayRecord
+                    key={`${year}${id}`}
+                    data={rec.record}
+                    year={year}
+                    id={id}
+                  />
+                );
+              })}
+          </div>
         </div>
       </div>
     </div>

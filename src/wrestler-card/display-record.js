@@ -105,7 +105,7 @@ const DisplayRecord = props => {
   };
 
   return (
-    <div>
+    <div style={{ display: 'inline-block', marginLeft: 10 }}>
       <button
         onClick={openModal}
         style={{
@@ -127,7 +127,7 @@ const DisplayRecord = props => {
         // style={style}
       >
         <button onClick={closeModal}>Close Modal</button>
-        {data && listData(data)}
+        {data && listData(data[year])}
       </ReactModal>
     </div>
   );
