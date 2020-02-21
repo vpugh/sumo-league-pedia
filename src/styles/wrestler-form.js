@@ -1,7 +1,16 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const WrestlerFormContainer = styled.div`
   max-width: 720px;
+  min-width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+`;
+
+export const ListContainer = styled.div`
+  max-width: 720px;
+  min-width: 400px;
   margin: 40px auto;
   border: 1px solid #ddd;
   padding: 20px;
@@ -102,7 +111,7 @@ export const SelectInput2 = styled.div`
     border-width: 1px;
     border-style: solid;
     border-color: rgb(166, 166, 166);
-    background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png")
+    background: url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png')
         97% center no-repeat,
       #f8f8f8;
     -webkit-appearance: none;

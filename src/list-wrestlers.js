@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { WrestlerFormContainer } from './styles/wrestler-form';
+import { ListContainer } from './styles/wrestler-form';
 import { ListTitle } from './styles/list';
 import WrestlerCards from './wrestler-card/wrestler-cards';
 import TextProgress from './components/text-progress';
@@ -11,13 +11,13 @@ const ListWrestlers = () => {
   const [wrestlers] = useContext(WrestlerContext);
   if (wrestlers && wrestlers.length > 0) {
     return (
-      <WrestlerFormContainer>
+      <ListContainer>
         <ListTitle>List of Sumo Wrestlers</ListTitle>
         {filteredWrestlers(wrestlers).map(w => (
           <WrestlerCards w={w} key={w.id} />
         ))}
         <AddWrestlerButtonModal />
-      </WrestlerFormContainer>
+      </ListContainer>
     );
   }
   return <TextProgress text={'Loading Wrestlers'} />;

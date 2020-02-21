@@ -45,7 +45,8 @@ new Server({
     application: ApplicationSerializer,
     rikishi: ApplicationSerializer.extend({
       include: ['record'],
-      embed: true
+      embed: true,
+      root: false
     })
   },
   models: {
@@ -94,8 +95,16 @@ new Server({
       placeOfBirth() {
         return locations[Math.floor(Math.random() * locations.length)];
       },
-      injured: false,
-      status: 'active'
+      active() {
+        return Math.random() >= 0.5;
+      },
+      injured() {
+        if (this.active) {
+          return Math.random() >= 0.5;
+        } else {
+          return null;
+        }
+      }
     }),
     record: Factory.extend({
       rikishiId(i) {

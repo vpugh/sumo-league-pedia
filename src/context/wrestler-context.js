@@ -5,7 +5,7 @@ const WrestlerContext = createContext(() => [{}, () => []]);
 
 const fetchWrestlers = async set => {
   const data = await getWrestlers();
-  set(data.rikishis);
+  set(data);
 };
 
 const WrestlerProvider = props => {

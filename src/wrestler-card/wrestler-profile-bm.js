@@ -9,7 +9,12 @@ const style = {
     background: 'rgba(0, 0, 0, .75)'
   },
   content: {
-    padding: 0
+    padding: 0,
+    left: 0,
+    right: 0,
+    bottom: 'auto',
+    width: 'fit-content',
+    margin: '0 auto'
   }
 };
 
@@ -51,7 +56,9 @@ const WrestlerProfileBM = ({ w }) => {
         shouldCloseOnOverlayClick={true}
         style={style}
       >
-        {!isEditing && isModalOpen && <WrestlerProfile wrestlerData={w} />}
+        {!isEditing && isModalOpen && (
+          <WrestlerProfile wrestlerData={w} onClose={closeModal} />
+        )}
         {isEditing && isModalOpen && (
           <UpdateWrestlers wrestlerData={w} onClose={closeModal} />
         )}
